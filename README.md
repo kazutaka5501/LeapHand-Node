@@ -15,27 +15,8 @@ This package does **not** replace the original driver — instead, it provides e
 - ✔️ Manual joint movement mode with reduced PD gains (allowing physical pose shaping)
 - ✔️ Predefined manipulation motion execution (position-only, no feedback loop)
 - ✔️ CyberGlove-based teleoperation interface
-- ✔️ Full teleoperation with pose targeting and interpolation
 - ✔️ ROS1 Noetic compatible
 - ✔️ Modular Python code for extension
-
----
-
-## 📦 Repository Structure
-
-LeapHand-Node/
-│
-├── src/
-│ ├── leaphand_node_manual.py
-│ ├── leaphand_node_posenoloop.py
-│ ├── leaphand_node_teleop.py
-│ └── leaphand_node_teleop_pose_full.py
-│
-└── launch/
-├── manual.launch
-├── posenoloop.launch
-├── teleop.launch
-└── teleop_full.launch
 
 
 | Mode | Node | Launch File | Description |
