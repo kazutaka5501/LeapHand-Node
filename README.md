@@ -6,40 +6,44 @@ This repository provides additional control modes for the **LEAP Hand** and is i
 
 👉 https://github.com/leap-hand/LEAP_Hand_API/tree/main/ros_module
 
-This package does **not** replace the original driver — instead, it offers teleoperation modes, pose-based behaviors, and manual soft-actuation control for research and experimentation.
+This package does **not** replace the original driver — instead, it provides enhanced teleoperation, pose-based execution, and soft manual manipulation modes suitable for research and experimentation.
 
 ---
 
 ## 🚀 Features
 
-- ✔️ Manual joint control with near-zero PD stiffness (physically manipulable hand posture recording)
-- ✔️ Pose-based playback (open-loop position execution)
-- ✔️ Full pose teleoperation (closed-loop interpolation and execution)
-- ✔️ Basic direct teleoperation interface
-- ✔️ ROS1 Noetic compatible Python nodes
-- ✔️ Extendable for glove-based teleoperation (CyberGlove, Manus MetaGlove, DG-5F, etc.)
+- ✔️ Manual joint movement mode with reduced PD gains (allowing physical pose shaping)
+- ✔️ Predefined manipulation motion execution (position-only, no feedback loop)
+- ✔️ CyberGlove-based teleoperation interface
+- ✔️ Full teleoperation with pose targeting and interpolation
+- ✔️ ROS1 Noetic compatible
+- ✔️ Modular Python code for extension
 
 ---
 
-## 📦 Package Contents
-
-| File | Launch | Description |
-|------|--------|-------------|
-| `leaphand_node_manual.py` | `manual.launch` | Manual physical manipulation mode — PD gains minimized to softly move the hand and record joint states |
-| `leaphand_node_posenoloop.py` | `posenoloop.launch` | Predefined manipulation sequences executed using **pure position control (no feedback loop)** |
-| `leaphand_node_teleop.py` | `teleop.launch` | Basic teleoperation mode — device → LEAP joint mapping |
-| `leaphand_node_teleop_pose_full.py` | `teleop_full.launch` | Full teleoperation with pose-based control (device input + target pose interpolation) |
+## 📦 Repository Structure
 
 LeapHand-Node/
-├─ leaphand_node_manual.py
-├─ leaphand_node_posenoloop.py
-├─ leaphand_node_teleop.py
-├─ leaphand_node_teleop_pose_full.py
-├─ manual.launch
-├─ posenoloop.launch
-├─ teleop.launch
-└─ teleop_full.launch
+│
+├── src/
+│ ├── leaphand_node_manual.py
+│ ├── leaphand_node_posenoloop.py
+│ ├── leaphand_node_teleop.py
+│ └── leaphand_node_teleop_pose_full.py
+│
+└── launch/
+├── manual.launch
+├── posenoloop.launch
+├── teleop.launch
+└── teleop_full.launch
 
+
+| Mode | Node | Launch File | Description |
+|------|------|-------------|-------------|
+| Manual Control | `leaphand_node_manual.py` | `manual.launch` | Soft actuation mode. The hand becomes compliant and can be physically moved to record joint poses. |
+| Pose (No Loop) | `leaphand_node_posenoloop.py` | `posenoloop.launch` | Executes predefined hand manipulation motions using pure positional commands. |
+| CyberGlove Teleoperation | `leaphand_node_teleop.py` | `teleop.launch` | Teleoperation mode where CyberGlove joint angles are mapped directly to LEAP hand commands. |
+| Full Pose Teleoperation | `leaphand_node_teleop_pose_full.py` | `teleop_full.launch` | CyberGlove-based teleoperation with additional pose targeting and closed-loop refinement. |
 
 ---
 
@@ -49,8 +53,9 @@ LeapHand-Node/
 |------|---------|
 | Ubuntu | **20.04** |
 | ROS | **Noetic** |
-| Python | 3.8 or higher |
+| Python | 3.8+ |
 | LEAP Hand ROS Module | Required |
+| CyberGlove driver | Required for teleoperation modes |
 
 ---
 
@@ -59,42 +64,25 @@ LeapHand-Node/
 ```bash
 sudo apt install ros-noetic-desktop-full
 
-
-
-(Optional virtual environment — recommended)
+(Optional venv)
 
 python3 -m venv leap_env
 source leap_env/bin/activate
 
-Create workspace:
+Clone required module:
 
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src
+git clone https://github.com/leap-hand/LEAP_Hand_API.git
+mv LEAP_Hand_API/ros_module .
 
-Clone or copy the official ros_module folder from:
-
-👉 https://github.com/leap-hand/LEAP_Hand_API/tree/main/ros_module
-
-Then build:
+Build:
 
 pip install empy==3.3.4 catkin_pkg pyyaml rospkg
 cd ~/catkin_ws
 catkin_make
 
-Setup environment:
+Setup:
 
 echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
-
-Install dependencies:
-
-pip install dynamixel_sdk numpy
-sudo chmod 777 /dev/serial/by-id/*
-cd ~/catkin_ws/src/ros_module
-chmod +x leaphand_node.py
-
-Test official module:
-
-roslaunch example.launch
-rostopic list
-rosservice list
