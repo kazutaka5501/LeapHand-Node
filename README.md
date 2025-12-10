@@ -12,11 +12,11 @@ This package does **not** replace the original driver — instead, it provides e
 
 ##  Features
 
-- ✔️ Manual joint movement mode with reduced PD gains (allowing physical pose shaping)
-- ✔️ Predefined manipulation motion execution (position-only, no feedback loop)
-- ✔️ CyberGlove-based teleoperation interface
-- ✔️ ROS1 Noetic compatible
-- ✔️ Modular Python code for extension
+-  Manual joint movement mode with reduced PD gains (allowing physical pose shaping)
+-  Predefined manipulation motion execution (position-only, no feedback loop)
+-  CyberGlove-based teleoperation interface
+-  ROS1 Noetic compatible
+-  Modular Python code for extension
 
 
 | Mode | Node | Launch File | Description |
