@@ -1,10 +1,10 @@
-# 🖐️ LeapHand-Node (ROS1 Add-On Control Package)
+# LeapHand-Node (ROS1 Add-On Control Package)
 
 This repository provides additional control modes for the **LEAP Hand** and is intended to be used **on top of the official LEAP Hand ROS module**.  
 
  **Before using this package, you must install the official LEAP Hand ROS module located here:**
 
-👉 https://github.com/leap-hand/LEAP_Hand_API/tree/main/ros_module
+ https://github.com/leap-hand/LEAP_Hand_API/tree/main/ros_module
 
 This package does **not** replace the original driver — instead, it provides enhanced teleoperation, pose-based execution, and soft manual manipulation modes suitable for research and experimentation.
 
@@ -40,7 +40,7 @@ This package does **not** replace the original driver — instead, it provides e
 
 ---
 
-## 🔧 Install the Official LEAP Hand ROS Module First
+## Install the Official LEAP Hand ROS Module First
 
 ```bash
 sudo apt install ros-noetic-desktop-full
