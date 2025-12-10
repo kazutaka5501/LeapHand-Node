@@ -10,7 +10,7 @@ This package does **not** replace the original driver — instead, it provides e
 
 ---
 
-## 🚀 Features
+##  Features
 
 - ✔️ Manual joint movement mode with reduced PD gains (allowing physical pose shaping)
 - ✔️ Predefined manipulation motion execution (position-only, no feedback loop)
