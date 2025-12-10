@@ -2,7 +2,7 @@
 
 This repository provides additional control modes for the **LEAP Hand** and is intended to be used **on top of the official LEAP Hand ROS module**.  
 
-⚠️ **Before using this package, you must install the official LEAP Hand ROS module located here:**
+ **Before using this package, you must install the official LEAP Hand ROS module located here:**
 
 👉 https://github.com/leap-hand/LEAP_Hand_API/tree/main/ros_module
 
@@ -28,7 +28,7 @@ This package does **not** replace the original driver — instead, it provides e
 
 ---
 
-## 🧰 Requirements
+## Requirements
 
 | Item | Version |
 |------|---------|
